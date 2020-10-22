@@ -1,0 +1,5 @@
+mkdir wallet
+cd wallet
+git clone https://github.com/dan-da/hd-wallet-derive
+ln -s hd-wallet-derive/hd-wallet-derive.php derive
+./derive -g --mnemonic="INSERT MNEMONIC HERE" --cols=path,address,privkey,pubkey
