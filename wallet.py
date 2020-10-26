@@ -82,12 +82,18 @@ if __name__ == "__main__":
     test = input ("Rung a test? (y/n) :")
     if test.lower() == 'y':
         coins = {}
-        coin = ETH  # coin = BTCTEST
+        coin_name = input("\nInput coin name (ETH or BTCTEST):")
+        if coin_name.lower() == 'btctest':
+            coin = BTCTEST
+            amount = 0.00001
+        else:
+            coin = ETH  # coin = BTCTEST
+            amount = 1  # amount = 0.00001 # for BTCTEST
         coins[coin] = derive_wallets(mnemonic, coin)
         priv_key = coins[coin][0]['privkey']
         account = priv_key_to_account(coin, priv_key)
         recipient = coins[coin][1]['address']
-        amount = 1  # amount = 0.00001 # for BTCTEST
+
         tx_created = create_tx(coin, account, recipient, amount)
         print(send_tx(coin, account, recipient, amount))
 
